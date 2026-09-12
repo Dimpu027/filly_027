@@ -1,5 +1,6 @@
 {
   "payroll__page_title": "Care Payroll",
   "payroll__action_label": "Open Care Payroll",
-  "payroll__loading": "Loading…"
+  "payroll__loading": "Loading…",
+  "payroll__error": "Payroll configuration could not be loaded."
 }

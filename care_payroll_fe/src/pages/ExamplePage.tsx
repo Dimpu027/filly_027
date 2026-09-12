@@ -6,7 +6,7 @@ import { API } from "@/utils/api";
 /** A full page, injected via `manifest.routes`. Costs zero changes to core. */
 export default function ExamplePage() {
   const { t } = useTranslation();
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["care_payroll", "config"],
     queryFn: () => API.config(),
   });
@@ -17,6 +17,8 @@ export default function ExamplePage() {
       <p className="mt-2 text-sm text-gray-600">
         {isLoading
           ? t("payroll__loading")
+          : isError
+            ? t("payroll__error")
           : `enabled: ${String(data?.enabled)}`}
       </p>
     </div>
