@@ -2,5 +2,7 @@
   "payroll__page_title": "Care Payroll",
   "payroll__action_label": "Open Care Payroll",
   "payroll__loading": "Loading…",
-  "payroll__error": "Payroll configuration could not be loaded."
+  "payroll__error": "Payroll configuration could not be loaded.",
+  "payroll__unauthorized": "Sign in to CARE to access payroll.",
+  "payroll__retry": "Retry"
 }

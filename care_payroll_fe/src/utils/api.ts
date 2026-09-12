@@ -72,15 +72,24 @@ export async function request<T>(
 
   const token = getAuthToken();
 
-  const response = await fetch(url, {
-    method,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    },
-    body: body === undefined ? undefined : JSON.stringify(body),
-  });
+  let response: Response;
+  try {
+    response = await fetch(url, {
+      method,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+  } catch {
+    throw new ApiError(
+      0,
+      null,
+      "The payroll service is unavailable. Start CARE and try again.",
+    );
+  }
 
   // Parse text-then-JSON so empty 204 bodies don't throw.
   const text = await response.text();
